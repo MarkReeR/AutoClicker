@@ -1,6 +1,10 @@
+import os
+import sys
+from pathlib import Path
 import customtkinter
 import keyboard
 from clicker import AutoClicker
+
 
 
 class App(customtkinter.CTk):
@@ -17,7 +21,21 @@ class App(customtkinter.CTk):
         self.HEIGHT = 440
 
         self.geometry(f"{self.WIDTH}x{self.HEIGHT}")
-        self.iconbitmap(".\\assets\\icon.ico")
+        
+        #icon
+        if getattr(sys, 'frozen', False):
+            base_path = sys._MEIPASS
+        else:
+            base_path = os.path.dirname(os.path.abspath(__file__))
+            
+        icon_path = os.path.join(base_path, "assets", "mouse.ico")
+        
+        if not os.path.exists(icon_path):
+            print(f"Warning: Icon not found at {icon_path}")
+        else:
+            self.iconbitmap(icon_path)
+        
+        
         self.title("AutoClicker")
 
         # Decor
