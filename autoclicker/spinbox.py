@@ -3,7 +3,7 @@ from typing import Union, Callable
 
 class FloatSpinbox(customtkinter.CTkFrame):
     def __init__(self, *args,
-                 width: int = 100,
+                 width: int = 110,
                  height: int = 32,
                  step_size: Union[int, float] = 1,
                  command: Callable = None,
